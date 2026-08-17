@@ -56,11 +56,12 @@ jobs:
       # 6. Executa a suíte de testes em modo Headless (sem janela gráfica) e injeta as credenciais das Secrets
       - name: Executar Testes em Headless com Allure
         env:
-          USUARIO: ${{ secrets.USUARIO_PADRAO }}  # Pega a Secret configurada no GitHub
-          SENHA: ${{ secrets.SENHA_PADRAO }}      # Pega a Secret configurada no GitHub
+          USUARIO: ${{ secrets.USUARIO_PADRAO }}
+          SENHA: ${{ secrets.SENHA_PADRAO }}
+          USUARIO_BLOQUEADO: ${{ secrets.USUARIO_BLOQUEADO }}
         run: |
-          robot -d ./results --listener allure_robotframework:./allure-results -v BROWSER:headlesschrome -v USUARIO_PADRAO:${{ env.USUARIO }} -v SENHA_PADRAO:${{ env.SENHA }} tests/
-        continue-on-error: true                  # Garante que os próximos passos rodem mesmo se algum teste falhar
+          robot -d ./results --listener allure_robotframework:./allure-results -v BROWSER:headlesschrome -v USUARIO_PADRAO:${{ env.USUARIO }} -v SENHA_PADRAO:${{ env.SENHA }} -v USUARIO_BLOQUEADO:${{ env.USUARIO_BLOQUEADO }} tests/
+        continue-on-error: true                 # Garante que os próximos passos rodem mesmo se algum teste falhar
 
       # 7. Instala a CLI do Allure via npm e compila a pasta de relatórios HTML estática
       - name: Gerar Relatorio Allure
