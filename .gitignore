@@ -1,0 +1,6 @@
+.env
+venv/
+log.html
+report.html
+output.xml
+allure-results/

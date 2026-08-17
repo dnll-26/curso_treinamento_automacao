@@ -1,6 +1,7 @@
 *** Settings ***
 Resource    ../resources/pages/login/login_pages.resource
 Resource    ../resources/pages/products/products_pages.resource
+Variables    ../data/env.py
 
 Test Setup          Abrir Novo Browser    url=https://www.saucedemo.com/    
 Test Teardown    Fechar Navegador
@@ -18,8 +19,8 @@ CT01 - Realizar Login Com Sucesso
     ...    allure.severity:critical
     ...    allure.issue:https://www.atlassian.com/br/software/jira/templates/scrum
 
-    Preencher Usuário    usuario=standard_user
-    Preencher Senha    senha=secret_sauce
+    Preencher Usuário    usuario=${USUARIO_PADRAO}
+    Preencher Senha    senha=${SENHA_PADRAO}
     Botão Realizar Login
     Visualizar Tela Inicial De Produtos
 
@@ -31,7 +32,7 @@ CT02 - Reliza Login Sem Sucesso
     ...    allure.severity:normal
     ...    allure.issue:https://www.atlassian.com/br/software/jira/templates/scrum
 
-    Preencher Usuário    usuario=locked_out_user
-    Preencher Senha    senha=secret_sauce
+    Preencher Usuário    usuario=${USUARIO_BLOQUEADO}
+    Preencher Senha    senha=${SENHA_PADRAO}
     Botão Realizar Login
     Run Keyword And Expect Error    *    Visualizar Tela Inicial De Produtos
