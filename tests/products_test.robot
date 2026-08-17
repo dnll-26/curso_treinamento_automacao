@@ -14,6 +14,7 @@ Suite Setup    Run Keywords
 ...    AND    Preencher Senha    senha=${SENHA_PADRAO}    
 ...    AND    Botão Realizar Login    
 ...    AND    Visualizar Tela Inicial De Produtos
+Suite Teardown    Fechar Navegador
 
 Test Tags               allure.layer:ui    allure.epic:products
 
