@@ -21,26 +21,33 @@ Test Tags               allure.layer:ui    allure.epic:products
 Name                Products
 
 *** Test Cases ***
-CT01 - Realiza Compras
+CT01 - Realizar Compra De Produto Com Sucesso
     [Documentation]    
     ...    Testa a autenticação com credenciais válidas e valida o acesso à página de produtos.
     [Tags]
-    ...    allure.story:login_com_sucesso
+    ...    allure.story:compra_com_sucesso
     ...    allure.severity:critical
     ...    allure.issue:https://www.atlassian.com/br/software/jira/templates/scrum
 
     Visualizar Tela Inicial De Produtos
+    
     Adicionar Item Ao Carrinho De Compras    produto=Sauce Labs Backpack
+    
     Botão Carrinho De Compras
-    Visualizar Produtos No Carrinho    nome_produto=Sauce Labs Backpack
+    Visualizar Produtos No Carrinho         nome_produto=Sauce Labs Backpack
+    
     Botão Checkout
-    Preencher Inormações De Checkout
-    Visualizar Produto    nome_produto=Sauce Labs Backpack
-    ${preco_item_element}    
-    ...    ${tax_item_element}=    Retorna Valor E Taxa Do Produto
-    ${total}=    Calcula Price Total    
-    ...    preco_item=${preco_item_element}    
-    ...    preco_tax=${tax_item_element}
-    Visualizar E Validar Preço Total    preco_total=${total}
+    
+    Preencher Informações De Checkout
+    Visualizar Produto                       nome_produto=Sauce Labs Backpack
+    
+    # Captura os valores de preço e taxa
+    ${preco_item_element}    ${tax_item_element}=    Retorna Valor E Taxa Do Produto
+    
+    # Calcula o valor total esperado via keyword em Python
+    ${total}=    Calcula Price Total    preco_item=${preco_item_element}    preco_tax=${tax_item_element}
+    Visualizar E Validar Preço Total         preco_total=${total}
+    
     Botão Finish
+    
     Visualizar Mensagem De Sucesso De Compra

@@ -3,7 +3,7 @@ Resource    ../../imports/package.resource
 Variables    ../../element/checkout/checkout_element.py
 
 *** Keywords ***
-Preencher Inormações De Checkout
+Preencher Informações De Checkout
     ${fist_name}=    FakerLibrary.Name
     ${last_name}=    FakerLibrary.Last Name
     ${postal_code}=    FakerLibrary.Postcode
