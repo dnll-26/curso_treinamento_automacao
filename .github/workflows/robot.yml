@@ -51,7 +51,7 @@ jobs:
       # 6. Executa os testes gerando os resultados para o Allure (com --listener)
       - name: Executar Testes em Headless com Allure
         run: |
-          robot -d ./results --listener allure_robotframework:./allure-results -v BROWSER:headlesschrome TestCases/
+          robot -d ./results --listener allure_robotframework:./allure-results -v BROWSER:headlesschrome tests/
         continue-on-error: true
 
       # 7. Gera o Relatório HTML do Allure via CLI (evita erros de Docker e gera estrutura estática limpa)
