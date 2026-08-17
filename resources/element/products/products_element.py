@@ -1,0 +1,1 @@
+PRODUCTS_INVENTORY = '//*[@id="inventory_container"]'
