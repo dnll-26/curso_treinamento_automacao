@@ -1,0 +1,7 @@
+USERNAME_CAMPO =          '//*[@id="user-name"]'
+PASSWORD_CAMPO =          '//*[@id="password"]'
+BTN_LOGIN =               '//*[@id="login-button"]'
+MNG_USER_BLOQUEADO =      '//*[contains(text(),"Epic sadface: Sorry, this user has been locked out.")]'
+MSG_USER_REQUIRED =       '//*[contains(text(),"Epic sadface: Username is required")]'
+TELA_INICIAL =            '//*[@id="header_container"]/div[1]/div[2]/div'
+TELA_INICIAL_SWAG_LABS =  '//*[@id="header_container"]/div[2]/span'
